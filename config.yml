@@ -22,7 +22,7 @@ metadata:
   namespace: default
   name: simple-app
 spec:
-  replicas: 0
+  replicas: #@ data.values.replicas
   selector:
     matchLabels: #@ labels()
   template:
