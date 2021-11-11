@@ -1,11 +1,8 @@
 #@data/values
 ---
-#@overlay/match missing_ok=True
-replicas: 0
-#@overlay/match missing_ok=True
+replicas: 1
 svc_port: 80
-#@overlay/match missing_ok=True
 app_port: 80
-#@overlay/match missing_ok=True
+app_version: 0.0.1
+namespace: default
 hello_msg: stranger
-

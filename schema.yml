@@ -1,0 +1,23 @@
+#@data/values-schema
+---
+#@overlay/match missing_ok=True
+replicas: 1
+
+#@overlay/match missing_ok=True
+svc_port: 80
+
+#@overlay/match missing_ok=True
+app_port: 80
+
+#@overlay/match missing_ok=True
+#@schema/nullable
+app_name: ""
+
+#@overlay/match missing_ok=True
+app_version: ""
+
+#@overlay/match missing_ok=True
+namespace: default
+
+#@overlay/match missing_ok=True
+hello_msg: world

@@ -1,15 +1,18 @@
 #@ load("@ytt:data", "data")
 
 #@ def labels():
-simple-app: ""
+app.kubernetes.io/name: #@ data.values.app_name
+app.kubernetes.io/component: main
+app.kubernetes.io/part-of: #@ data.values.app_name
+app.kubernetes.io/version: #@ data.values.app_version
 #@ end
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: default
-  name: simple-app
+  namespace: #@ data.values.namespace
+  name: #@ data.values.app_name
 spec:
   ports:
   - port: #@ data.values.svc_port
@@ -19,8 +22,8 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: default
-  name: simple-app
+  namespace: #@ data.values.namespace
+  name: #@ data.values.app_name
 spec:
   replicas: #@ data.values.replicas
   selector:
@@ -30,8 +33,8 @@ spec:
       labels: #@ labels()
     spec:
       containers:
-      - name: simple-app
-        image: simple-app
+      - name: #@ data.values.app_name
+        image: #@ data.values.app_name
         env:
         - name: HELLO_MSG
           value: #@ data.values.hello_msg
