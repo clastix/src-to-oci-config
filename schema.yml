@@ -21,3 +21,6 @@ namespace: default
 
 #@overlay/match missing_ok=True
 hello_msg: world
+
+#@overlay/match missing_ok=True
+expose_svc: "false"

@@ -6,3 +6,4 @@ app_port: 80
 app_version: 0.0.1
 namespace: default
 hello_msg: stranger
+expose_svc: "false"
