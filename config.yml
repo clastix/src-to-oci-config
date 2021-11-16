@@ -38,3 +38,21 @@ spec:
         env:
         - name: HELLO_MSG
           value: #@ data.values.hello_msg
+#@ if/end data.values.expose_svc == "true":
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: #@ data.values.namespace
+  name: #@ data.values.app_name
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: #@ data.values.app_name
+            port:
+              number: #@ data.values.svc_port
